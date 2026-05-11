@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moda Flash</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bangers&family=Fredoka:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon"  href="AdobeFlash logo verde.ico" type="image/x-icon"  >
+  <link rel="stylesheet" href="DEMO 2.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Fredoka', sans-serif;
+      background: rgba(120, 21, 202, 0.95);
+      color: #000000;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: #dbb313;
+      color: #000;
+    }
+
+    /* NAV */
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 999;
+      background: rgba(120, 21, 202, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 4px solid #000;
+      padding: 1rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Bangers', cursive;
+      font-size: 2rem;
+      letter-spacing: 2px;
+      color: #dbb313;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+      color: #dbb313;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #dbb313;
+      font-weight: 600;
+      transition: 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #05c71f;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8rem 5rem 4rem;
+      background: rgba(120, 21, 202, 0.95);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      background: #ff4f00;
+      border-radius: 50%;
+      top: -120px;
+      right: -120px;
+      opacity: 0.15;
+    }
+
+    .hero-content {
+      width: 100%;
+      max-width: 1300px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 4rem;
+      align-items: center;
+      z-index: 1;
+    }
+
+    .hero-text h1 {
+      font-family: 'Bangers', cursive;
+      font-size: clamp(4rem, 9vw, 8rem);
+      line-height: 0.95;
+      color: #dbb313;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      text-shadow: 5px 5px 0px #000;
+    }
+
+    .hero-text p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  max-width: 600px;
+  margin-bottom: 2rem;
+  color: white;
+}
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 1rem 2rem;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 700;
+      border: 3px solid #000;
+      transition: 0.25s ease;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: #dbb313;
+      color: white;
+    }
+
+    .btn-secondary {
+      background: white;
+      color: black;
+    }
+
+    .btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 0 #000;
+    }
+
+    /* Collage */
+
+    .collage {
+      position: relative;
+      height: 550px;
+    }
+
+    .card {
+      position: absolute;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 4px solid #000;
+      background: white;
+      box-shadow: 12px 12px 0px #000;
+      transition: 0.3s ease;
+    }
+
+    /* Posicionamiento y rotación individual de las imágenes */
+    .img-bad-ice-cream {
+      top: 0;
+      left: 10%;
+      transform: rotate(-10deg);
+      width: 200px;
+    }
+
+    .img-electricman {
+      top: 15%;
+      right: 5%;
+      transform: rotate(8deg);
+      width: 220px;
+    }
+
+    .img-garfield {
+      bottom: 10%;
+      left: 0;
+      transform: rotate(-5deg);
+      width: 240px;
+    }
+
+    .img-mankey-fu {
+      bottom: 5%;
+      right: 15%;
+      transform: rotate(12deg);
+      width: 180px;
+    }
+
+ 
+  
+
+    .floating-text {
+      position: absolute;
+      font-family: 'Bangers', cursive;
+      font-size: 1.2rem;
+      color: #000;
+      background: #fff;
+      padding: 0.7rem 1rem;
+      border: 3px solid #000;
+      border-radius: 14px;
+      box-shadow: 5px 5px 0 #000;
+    }
+
+    .floating-1 {
+      top: 60px;
+      right: 80px;
+    }
+
+    .floating-2 {
+      bottom: 30px;
+      left: 40px;
+    }
+
+    /* Sections */
+
+    section {
+      padding: 7rem 5rem;
+      position: relative;
+    }
+
+    .section-title {
+      font-family: 'Bangers', cursive;
+      font-size: clamp(2.5rem, 5vw, 5rem);
+      margin-bottom: 2rem;
+      line-height: 1;
+      color: #dbb313;
+      text-transform: uppercase;
+    }
+
+    .section-subtitle {
+  font-family: 'Anton', sans-serif;
+  max-width: 700px;
+  line-height: 1.8;
+  font-size: 1.1rem;
+  margin-bottom: 4rem;
+  color: white;
+}
+
+    /* HISTORIA */
+
+    .history {
+      background: rgba(120, 21, 202, 0.95);
+    }
+
+    .history-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .history-card {
+      background: #ffffff;
+      border: 4px solid #000;
+      border-radius: 25px;
+      padding: 2rem;
+      box-shadow: 12px 12px 0px #000;
+    }
+
+    .history-card h3 {
+      font-family: 'Anton', sans-serif;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #dbb313
+    }
+
+   .history-card p {
+  line-height: 1.8;
+  color: black;
+}
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+
+    .menu-item {
+      aspect-ratio: 1/1;
+      border-radius: 16px;
+      border: 3px solid #000;
+      transition: 0.2s ease;
+    }
+
+    /* DISEÑO */
+
+    .design {
+      background: rgba(120, 21, 202, 0.95);
+      color: white;
+    }
+
+    .design .section-title {
+      color: #dbb313;
+    }
+
+    .design-layout {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .typography-box {
+      background: #dbb313;
+      padding: 2rem;
+      border-radius: 30px;
+      border: 4px solid #fff;
+      box-shadow: 12px 12px 0px #000000;
+    }
+
+    .typography-box h3 {
+      font-family: 'Anton', sans-serif;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .type-demo {
+      font-family: 'Bangers', cursive;
+      font-size: 4rem;
+      line-height: 1;
+      margin: 2rem 0;
+    }
+
+    .ux-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .ux-card {
+      background: #ffffff;
+      border: 3px solid #dbb313;
+      border-radius: 20px;
+      padding: 1.5rem;
+      transition: 0.3s ease;
+    }
+
+    .ux-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .ux-card h4 {
+      font-family: 'Anton', sans-serif;
+      color: #dbb313;
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+    }
+
+    .ux-card p {
+      line-height: 1.7;
+      color: #000000;
+    }
+.design-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 3rem;
+  align-items: center;
+}
+
+.design-images img {
+  width: 100%;
+  border-radius: 24px;
+  border: 4px solid #000;
+  box-shadow: 10px 10px 0 #000;
+  background: white;
+}
+
+.play-button-img {
+  max-width: 350px;
+  justify-self: center;
+}
+    /* LEGADO */
+
+    .legacy {
+      background: rgba(120, 21, 202, 0.95);
+    }
+
+    .legacy-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 4rem;
+    }
+
+    .legacy-box {
+      background: white;
+      border: 4px solid #000;
+      border-radius: 25px;
+      padding: 2rem;
+      box-shadow: 10px 10px 0px #000;
+    }
+
+    .legacy-box h3 {
+      font-family: 'Anton', sans-serif;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #05c71f;
+    }
+
+    .legacy-box p {
+      line-height: 1.8;
+    }
+
+    .retro-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 4rem;
+    }
+
+    .retro-icon {
+      width: 90px;
+      height: 90px;
+      border-radius: 20px;
+      border: 4px solid #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-weight: 700;
+      box-shadow: 8px 8px 0 #000;
+      transition: 0.25s ease;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: #320458;
+      color: rgb(255, 255, 255);
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+
+    footer h2 {
+      font-family: 'Bangers', cursive;
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #ffdd57;
+    }
+
+    footer p {
+      font-size: 1.1rem;
+      opacity: 0.8;
+    }
+
+    /* Responsive */
+
+    @media (max-width: 1100px) {
+
+      .hero-content,
+      .history-grid,
+      .design-layout,
+      .legacy-top {
+        grid-template-columns: 1fr;
+      }
+
+      .collage {
+        height: 500px;
+      }
+
+      nav {
+        padding: 1rem 2rem;
+      }
+
+      section,
+      .hero {
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
+    }
+
+    @media (max-width: 700px) {
+
+      nav {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      nav ul {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hero-text h1 {
+        font-size: 4rem;
+      }
+
+      .menu-grid,
+      .ux-cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .type-demo {
+        font-size: 2.5rem;
+      }
+
+      .card {
+        box-shadow: 8px 8px 0px #000;
+      }
+
+      .card-1 {
+        width: 180px;
+        height: 180px;
+      }
+
+      .card-2 {
+        width: 170px;
+      }
+
+      .card-3 {
+        width: 180px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">MODA FLASH</div>
+
+    <ul>
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#historia">Historia</a></li>
+      <li><a href="#diseno">Diseño Visual</a></li>
+      <li><a href="#legado">Legado</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero" id="inicio">
+
+    <div class="hero-content">
+
+      <div class="hero-text">
+        <h1>Moda<br>Flash</h1>
+
+        <p>
+          Una revista digital inspirada en la estética retro de Friv y la cultura de los juegos Flash.
+          Explora la historia, el diseño visual y el legado de una de las plataformas más recordadas del internet.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#historia" class="btn btn-primary">Explorar Revista</a>
+          <a href="#legado" class="btn btn-secondary">Ver Legado</a>
+        </div>
+      </div>
+
+      <div class="image-collage">
+
+       <img src="Bad ice Cream 3 (1).png" alt="Bad ice Cream" class="img-flash img-bad-ice-cream">
+        <img src="Electricman (1).png" alt="Electricman" class="img-flash img-electricman">
+        <img src="garfield SCARY SCAVENGER (1).png" alt="Garfield" class="img-flash img-garfield">
+        <img src="MANKEY FU_.png" alt="Mankey Fu" class="img-flash img-mankey-fu">
+
+
+        <div class="floating-text floating-1">Juegos Icónicos</div>
+        <div class="floating-text floating-2">Estética Retro</div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- HISTORIA -->
+
+  <section class="history" id="historia">
+
+    <h2 class="section-title">Historia de Friv</h2>
+
+    <p class="section-subtitle">
+      Friv marcó una generación gracias a su accesibilidad, rapidez y estilo visual lleno de color.
+      Su famoso “menú de cuadritos” transformó la manera de descubrir juegos en internet.
+    </p>
+
+    <div class="history-grid">
+
+      <div class="history-card">
+        <h3>Menú de Cuadritos</h3>
+
+        <p>
+          Uno de los elementos más recordados de Friv era su pantalla principal: una cuadrícula repleta de íconos coloridos.
+          Cada cuadro representaba un juego distinto y convertía la navegación en una experiencia intuitiva y dinámica.
+        </p>
+      </div>
+
+      <div class="image-card">
+        <img src="Fondo friv.png" alt="Menú de Friv" style
+ 
+        
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- DISEÑO -->
+
+  <section class="design" id="diseno">
+
+    <h2 class="section-title">Diseño Visual</h2>
+
+    <p class="section-subtitle">
+      Friv utilizaba colores vibrantes, tipografías gruesas y una interfaz diseñada para captar atención inmediata.
+      La experiencia UX eliminaba cualquier barrera entre el usuario y el juego.
+    </p>
+
+    <div class="design-layout">
+
+      <div class="typography-box">
+        <h3>Tipografía</h3>
+
+        <div class="type-demo">
+          FRIV
+        </div>
+
+        <p>
+          Las fuentes sans serif gruesas y amigables ayudaban a construir una estética accesible,
+          divertida y altamente reconocible.
+        </p>
+      </div>
+
+      <div class="ux-cards">
+
+        <div class="ux-card">
+          <h4>Colores Vibrantes</h4>
+          <p>
+            Amarillos, azules, verdes y rojos dominaban la interfaz para mantener una energía visual constante.
+          </p>
+        </div>
+
+        <div class="ux-card">
+          <h4>Iconografía</h4>
+          <p>
+            Cada juego se representaba con un ícono llamativo capaz de transmitir acción o aventura en segundos.
+          </p>
+        </div>
+
+        <div class="ux-card">
+          <h4>UX Simple</h4>
+          <p>
+            Entrar, elegir y jugar. La experiencia eliminaba configuraciones innecesarias.
+          </p>
+        </div>
+
+        <div class="ux-card">
+          <h4>Diseño Dinámico</h4>
+          <p>
+            El mosaico visual creaba una composición caótica pero equilibrada que invitaba a explorar.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+<div class="design-images">
+
+  <img src="Colores Friv.png" alt="Paleta de colores Friv">
+
+  <img src="Play Button.png" alt="Botón Play Friv" class="play-button-img">
+
+</div>  
+  </section>
+
+  <!-- LEGADO -->
+
+  <section class="legacy" id="legado">
+
+    <h2 class="section-title">El Legado de Friv</h2>
+
+    <p class="section-subtitle">
+      Más que una página de juegos, Friv se convirtió en una memoria colectiva digital.
+      Su estética, simplicidad y sensación de descubrimiento siguen presentes en el diseño contemporáneo.
+    </p>
+
+    <div class="legacy-top">
+
+      <div class="legacy-box">
+        <h3>Fin de Adobe Flash</h3>
+
+        <p>
+          La desaparición de Adobe Flash en 2020 marcó el final de una era.
+          Sin embargo, su influencia continúa presente en experiencias digitales interactivas y videojuegos casuales.
+        </p>
+      </div>
+
+      <div class="legacy-box">
+        <h3>Nostalgia Digital</h3>
+
+        <p>
+          Para millones de personas, Friv representa tardes de descubrimiento, diversión y creatividad.
+          Su estilo visual permanece vivo en la cultura digital actual.
+        </p>
+      </div>
+
+    </div>
+<div class="design-images">
+
+  <img src="AFP blocked.png" alt="Adobe Flash bloqueado" class="play-button-img">
+
+  <img src="AFP Blocked222.png" alt="Adobe Flash bloqueado 222" class="play-button-img">
+
+</div>  
+    </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+    <h2>MODA FLASH</h2>
+    <p>
+      “No eran solo juegos… eran un estilo de vida.”
+    </p>
+  </footer>
+
+</body>
+</html>
